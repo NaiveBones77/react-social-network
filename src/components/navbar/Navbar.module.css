@@ -1,0 +1,16 @@
+.nav {
+    grid-area: n;
+    background: linear-gradient(#ff6b25, #5d00ff);
+    padding: 20px;
+}
+
+.item a {
+    color: rgb(246, 232, 232);
+    text-decoration: none;
+}
+
+.item a.activeLink {
+    color: gold;
+    text-decoration: none;
+}
+
