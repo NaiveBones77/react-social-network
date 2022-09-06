@@ -1,4 +1,9 @@
 import {createRef} from "react";
+import {Input} from 'antd'
+import styles from './MessageArea.module.css'
+
+const {TextArea} = Input
+
 
 
 const MessageArea = () => {
@@ -11,8 +16,8 @@ const MessageArea = () => {
     }
 
     return (
-        <div>
-            <textarea ref={messageAreaElement}></textarea>
+        <div className ={styles.messageArea}>
+            <TextArea ref={messageAreaElement} rows={4} ></TextArea>
             <button onClick={sendMessage}>Send</button>
         </div>
     )

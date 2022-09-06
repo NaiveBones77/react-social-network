@@ -1,3 +1,5 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
 export let store = {
     _state : {
         profilePage: {
@@ -29,28 +31,29 @@ export let store = {
     rerenderEntireTree () {
         console.log('No subscribers')
     },
-    updateNewPostText(text) {
-        this._state.profilePage.newPostText = text
-        this.rerenderEntireTree(this._state)
-    },
-    addPost() {
-        let newPost = {
-            id: 5,
-            message: this._state.profilePage.newPostText
-        }
-        this._state.profilePage.postsData.push(newPost)
-        this._state.profilePage.newPostText=''
-        this.rerenderEntireTree(this._state)
-    },
 
     detach(action) {
-        if (action.type === '') {
-
+        if (action.type === ADD_POST) {
+            let newPost = {
+                id: 5,
+                message: this._state.profilePage.newPostText
+            }
+            this._state.profilePage.postsData.push(newPost)
+            this._state.profilePage.newPostText=''
+            this.rerenderEntireTree(this._state)
+        } else if (action.type === UPDATE_POST_TEXT) {
+            this._state.profilePage.newPostText = action.newText
+            this.rerenderEntireTree(this._state)
         }
     }
 
 
 }
+
+
+
+export const updatePostTextActionCreator = (text) => ({type: UPDATE_POST_TEXT, newText:text})
+export const addPostActionCreator = () => ({type: ADD_POST})
 
 
 export default store;
