@@ -19,7 +19,6 @@ const MyPosts = (props) => {
         props.updateNewPostText(text)
     }
 
-
     return (
         <div>
             <div className={styles.postBlock}>
