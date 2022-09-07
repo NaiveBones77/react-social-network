@@ -1,6 +1,5 @@
 .header {
   grid-area: h;
-  background: linear-gradient(cornflowerblue, skyblue);
 }
 
 .header img {

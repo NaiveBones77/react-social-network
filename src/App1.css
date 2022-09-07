@@ -1,0 +1,21 @@
+.app-wrapper {
+    margin: 0 auto;
+    display: grid;
+    width: 1200px;
+
+    /* grid-gap: 10px; */
+}
+
+.app-wrapper-content {
+    background-color: #fff297;
+}
+
+.site-layout-content {
+    min-height: 280px;
+    padding: 24px;
+    background: #fff;
+}
+
+.site-layout-background {
+    background: white !important;
+}
