@@ -5,11 +5,12 @@ import Message from "./Message/Message";
 import MessageArea from "./MessageArea/MessageArea";
 
 
-
 const Dialogs = (props) => {
 
-    let dialogs = props.state.dialogs
-    let messages = props.state.messages
+    let state = props.store.getState().dialogsPage
+    let dialogs = state.dialogs
+    let messages = state.messages
+
 
     let messagesElements = messages
         .map((el) => <Message text={el.message}/>)
@@ -28,7 +29,7 @@ const Dialogs = (props) => {
                     {messagesElements}
                 </div>
                 <div>
-                    <MessageArea/>
+                    <MessageArea store={props.store}/>
                 </div>
             </div>
         </div>
