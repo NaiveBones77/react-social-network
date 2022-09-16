@@ -2,21 +2,17 @@ import styles from './Dialogs.module.css'
 import {NavLink} from "react-router-dom";
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
-import MessageArea from "./MessageArea/MessageArea";
+import MessageAreaContainer from "./MessageArea/MessageAreaContainer";
+import {connect} from "react-redux";
 
 
 const Dialogs = (props) => {
 
-    let state = props.store.getState().dialogsPage
-    let dialogs = state.dialogs
-    let messages = state.messages
+    let messagesElements = props.messages
+        .map((el) => <Message text={el.message} key={el.id}/>)
 
-
-    let messagesElements = messages
-        .map((el) => <Message text={el.message}/>)
-
-    let dialogElement = dialogs
-        .map((el) => (<Dialog name={el.name} id={el.id}/>))
+    let dialogElement = props.dialogs
+        .map((el) => (<Dialog name={el.name} key={el.id}/>))
 
 
     return (
@@ -29,11 +25,12 @@ const Dialogs = (props) => {
                     {messagesElements}
                 </div>
                 <div>
-                    <MessageArea store={props.store}/>
+                    <MessageAreaContainer/>
                 </div>
             </div>
         </div>
     )
 }
+
 
 export default Dialogs;

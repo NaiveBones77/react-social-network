@@ -1,7 +1,6 @@
 import {createRef} from "react";
 import {Input} from 'antd'
 import styles from './MessageArea.module.css'
-import {sendMessageCreator, updateNewMessageTextCreator} from "../../../Redux/dialogs-reducer";
 
 const {TextArea} = Input
 
@@ -9,18 +8,16 @@ const {TextArea} = Input
 
 const MessageArea = (props) => {
 
-    let newMessageText = props.store.getState().dialogsPage.newMessageText
+    let newMessageText = props.newMessageText
     let messageAreaElement = createRef()
 
     let onSendMessageClick = () => {
-        let action = sendMessageCreator()
-        props.store.dispatch(action)
+        props.sendMessage()
     }
 
     let onNewMessageChange = (e) => {
         let text = e.target.value;
-        let action = updateNewMessageTextCreator(text)
-        props.store.dispatch(action)
+        props.changeMessage(text)
     }
 
     return (
