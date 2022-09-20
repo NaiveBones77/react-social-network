@@ -5,9 +5,7 @@ const SET_USERS = 'SET-USERS';
 
 let initialState = {
     users: [
-        // {id: 1, fullName: 'Anton K.', status: "Boss of this gym", location: {city: 'Belarus', country: "Minsk"}, subscribed: false},
-        // {id: 1, fullName: 'Maxim S.', status: "I'm looking for job now...", location: {city: 'Moscow', country: "Russia"}, subscribed: true},
-        // {id: 1, fullName: 'Chu J.', status: "Aliexpress sailor", location: {city: 'Beijing', country: "Chinese"}, subscribed: false},
+
     ]
 }
 

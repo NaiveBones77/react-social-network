@@ -2,14 +2,13 @@ import './App.css';
 import Header from './components/header/Header';
 import Navbar from './components/navbar/Navbar';
 import Profile from './components/profile/Profile';
-import Dialogs from "./components/dialogs/Dialogs";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Music from "./components/music/Music";
 import News from "./components/news/News";
 import Settings from "./components/settings/Settings";
 import Friends from "./components/friends/Friends";
 import DialogsContainer from "./components/dialogs/DialogsContainer";
-import Users from "./components/users/Users";
+import {UsersContainer} from "./components/users/UsersContainer";
 
 const App = (props) => {
     return (
@@ -26,7 +25,7 @@ const App = (props) => {
                         <Route path='/news' element={<News/>}/>
                         <Route path='/settings' element={<Settings/>}/>
                         <Route path='/friends' element={<Friends/>}/>
-                        <Route path ='/users' element={<Users />}/>
+                        <Route path ='/users' element={<UsersContainer />}/>
                     </Routes>
                 </div>
             </div>
