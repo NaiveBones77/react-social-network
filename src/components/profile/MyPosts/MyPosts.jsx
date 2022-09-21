@@ -2,7 +2,6 @@ import styles from './MyPosts.module.css'
 import Post from './Post/Post';
 import {createRef} from "react";
 
-
 const MyPosts = (props) => {
 
     let postsData = props.posts
