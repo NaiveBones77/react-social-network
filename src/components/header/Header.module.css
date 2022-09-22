@@ -5,5 +5,10 @@
 
 .header img {
   width: 40px;
+}
 
+.headerBlock a{
+  float: right;
+  color: white;
+  text-decoration: none;
 }
