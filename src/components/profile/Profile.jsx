@@ -6,10 +6,7 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 const Profile = (props) => {
     return (
         <div>
-            <div >
-                <img className={styles.topImage} src='https://wallpaperping.com/wp-content/uploads/2020/01/pexels-photo-466685.jpeg'/>
-            </div>
-            <Description/>
+            <Description profile={props.profile}/>
             <MyPostsContainer />
         </div>
     )
