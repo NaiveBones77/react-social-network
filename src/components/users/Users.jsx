@@ -4,6 +4,7 @@ import userPhoto from "../../assets/images/imgAvatarDefault.png";
 import React from "react";
 import "antd/dist/antd.css";
 import {NavLink} from "react-router-dom";
+import * as axios from 'axios'
 
 
 let Users = (props) => {
@@ -14,9 +15,9 @@ let Users = (props) => {
                     showQuickJumper
                     defaultCurrent={1}
                     total={props.totalUsersCount}
-                    showSizeChanger = {false}
+                    showSizeChanger={false}
                     pageSize={props.pageSize}
-                    onChange={ (page, pageSize) => {
+                    onChange={(page, pageSize) => {
                         props.onPageChanged(page, pageSize)
                     }}/>
             </div>
@@ -30,12 +31,34 @@ let Users = (props) => {
                             </NavLink>
                         </div>
                         <div>
-                           {u.subscribed
+                           {u.followed
                                ? <button onClick={() => {
-                                   props.unfollow(u.id)
+                                   axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
+                                       {withCredentials: true,
+                                       headers: {
+                                           'API-KEY': 'db65d9ab-48d6-40f5-a14a-646ab43b2e74'
+                                       }
+                                       })
+                                       .then(response => {
+                                           if (response.data.resultCode === 0) {
+                                               props.unfollow(u.id)
+                                           }
+                                       })
+
                                }}>Unfollow</button>
                                : <button onClick={() => {
-                                   props.follow(u.id)
+                                   axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
+                                       null,
+                                       {withCredentials: true,
+                                           headers: {
+                                               'API-KEY': 'db65d9ab-48d6-40f5-a14a-646ab43b2e74'
+                                           }
+                                       })
+                                       .then(response => {
+                                           if (response.data.resultCode === 0) {
+                                               props.follow(u.id)
+                                           }
+                                       })
                                }}>Follow</button>}
                         </div>
                     </span>

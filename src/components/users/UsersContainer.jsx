@@ -11,26 +11,27 @@ import React from "react";
 import * as axios from "axios";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
+import {getUsers} from "../../api/api";
 
 class UsersAPIComponent extends React.Component {
 
     componentDidMount() {
         this.props.toggleFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-            .then(response => {
+        getUsers(this.props.currentPage, this.props.pageSize)
+            .then(data => {
                 this.props.toggleFetching(false)
-                this.props.setUsers(response.data.items)
-                this.props.setTotalUsersCount(response.data.totalCount)
+                this.props.setUsers(data.items)
+                this.props.setTotalUsersCount(data.totalCount)
             })
     }
 
     onPageChanged = (page, pageSize) => {
         this.props.toggleFetching(true)
         this.props.setCurrentPage(page)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`)
-            .then(response => {
+        getUsers(page, this.props.pageSize)
+            .then(data => {
                 this.props.toggleFetching(false)
-                this.props.setUsers(response.data.items)
+                this.props.setUsers(data.items)
             })
     }
 
